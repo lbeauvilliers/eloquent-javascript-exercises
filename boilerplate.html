@@ -7,11 +7,17 @@
 <body>
 
 <h1>just some boilerplate</h1>
+<p class="secrets_here"></p>
 
 <script type="text/javascript">
     function autorun()
     {
-        alert("hello world!");
+        let result = confirm('I\'m going to ask you a question.');
+        console.log(`your response was ${result}`);
+        if(result) {
+            let yourSecret = prompt('Tell me a secret.');
+            document.getElementsByClassName("secrets_here")[0].innerHTML=`Your secret is: ${yourSecret}`;
+        }
     }
     if (window.addEventListener) window.addEventListener("load", autorun, false);
     else if (window.attachEvent) window.attachEvent("onload", autorun);
