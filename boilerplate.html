@@ -8,16 +8,28 @@
 
 <h1>just some boilerplate</h1>
 <p class="secrets_here"></p>
+<button class="ask_again" onclick="askQuestion()"></button>
 
 <script type="text/javascript">
+    function askQuestion() {
+        let yourSecret = prompt('Tell me a secret.');
+        if(yourSecret) {
+            document.getElementsByClassName("secrets_here")[0].innerHTML=`Your secret is: ${yourSecret}`;
+            //todo sanitize the string
+        } else {
+            document.getElementsByClassName("secrets_here")[0].innerHTML=`C'mon, tell me something!`;
+        }
+    }
     function autorun()
     {
         let result = confirm('I\'m going to ask you a question.');
         console.log(`your response was ${result}`);
         if(result) {
-            let yourSecret = prompt('Tell me a secret.');
-            document.getElementsByClassName("secrets_here")[0].innerHTML=`Your secret is: ${yourSecret}`;
+            askQuestion();
+        } else {
+            document.getElementsByClassName("secrets_here")[0].innerHTML=`That's no fun :(`;
         }
+        document.getElementsByClassName("ask_again")[0].innerHTML=`Ask again`; //todo inject whole element
     }
     if (window.addEventListener) window.addEventListener("load", autorun, false);
     else if (window.attachEvent) window.attachEvent("onload", autorun);
