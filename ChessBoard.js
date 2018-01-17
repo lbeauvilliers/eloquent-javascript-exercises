@@ -1,4 +1,4 @@
-characters = ['#',' '];
+characters = ['⬛','⬜'];
 board = '';
 size = 12;
 
